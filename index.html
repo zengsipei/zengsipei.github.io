@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>嗯哼~</title>
+    <style>
+        html {
+            height: 100%;
+        }
+        body {
+            margin: 0;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function setBodyBg(w, h) {
+            document.body.style.background = `url(https://picsum.photos/${w}/${h}) no-repeat`
+        }
+        setBodyBg(window.innerWidth, window.innerHeight)
+        const getWindoInfo = () => {
+            setBodyBg(window.innerWidth, window.innerHeight)
+        }
+        const debounce = (fn, delay) => {
+            let timer
+            return function() {
+                if (timer) {
+                    clearTimeout(timer)
+                }
+                timer = setTimeout(() => {
+                    fn()
+                }, delay)
+            }
+        }
+        const cancalDebounce = debounce(getWindoInfo, 500)
+        window.addEventListener('resize', cancalDebounce)
+    </script>
+</body>
+</html>
